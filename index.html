@@ -581,14 +581,14 @@ nav {
 .pain-number {
   font-size: 5rem;
   font-weight: 900;
-  color: #1A1A1A;
+  color: #C8FF00;
   position: absolute;
   top: 1rem; right: 1.5rem;
   line-height: 1;
   pointer-events: none;
   transition: color 0.3s;
 }
-.pain-item:hover .pain-number { color: #222; }
+.pain-item:hover .pain-number { color: #C8FF00; }
 
 .pain-icon {
   font-size: 1.5rem;
@@ -842,6 +842,50 @@ nav {
   font-size: 0.9rem;
   margin: -0.1rem 0;
 }
+
+/* ── PIPELINE VISUAL ── */
+.pipe-step { display:flex; align-items:center; gap:0.6rem; padding:0.5rem 0; }
+.pipe-icon { font-size:1rem; flex-shrink:0; width:24px; text-align:center; }
+.pipe-info { flex:1; }
+.pipe-label { font-size:0.75rem; font-weight:600; color:white; }
+.pipe-sub { font-size:0.65rem; color:#555; margin-top:0.1rem; }
+.pipe-badge { font-size:0.65rem; font-weight:700; flex-shrink:0; }
+.pipe-connector { width:2px; height:12px; background:#222; margin-left:11px; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+/* ── SEQUENCER VISUAL ── */
+.seq-flow { display:flex; flex-direction:column; gap:1rem; width:100%; }
+.seq-lead { display:flex; align-items:center; gap:0.75rem; background:#f0f0ea; border:1px solid #ddd; border-radius:10px; padding:0.75rem 1rem; }
+.seq-avatar { width:38px; height:38px; border-radius:50%; background:#0A0A0A; color:#C8FF00; font-weight:700; font-size:0.8rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.seq-lead-info { flex:1; }
+.seq-lead-name { font-weight:700; font-size:0.85rem; color:#0A0A0A; }
+.seq-lead-sub { font-size:0.72rem; color:#888; }
+.seq-steps { display:flex; flex-direction:column; }
+.seq-step { display:flex; align-items:center; gap:0.75rem; background:#f0f0ea; border:1px solid #ddd; border-radius:10px; padding:0.65rem 1rem; }
+.seq-icon { font-size:1.2rem; flex-shrink:0; }
+.seq-info { flex:1; }
+.seq-day { font-weight:600; font-size:0.8rem; color:#0A0A0A; }
+.seq-status { font-size:0.72rem; color:#888; }
+.seq-connector { width:2px; height:18px; background:#ddd; margin-left:1.85rem; }
+
+/* ── CRM VISUAL ── */
+.crm-card { display:flex; flex-direction:column; gap:0.75rem; width:100%; background:#111; border:1px solid #1E1E1E; border-radius:10px; padding:1.25rem; }
+.crm-header { display:flex; align-items:center; gap:0.75rem; }
+.crm-contact-info { flex:1; }
+.crm-name { font-weight:700; font-size:0.9rem; color:white; }
+.crm-meta { font-size:0.7rem; color:#666; }
+.crm-stats-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.5rem; }
+.crm-stat { background:#1A1A1A; border:1px solid #222; border-radius:6px; padding:0.6rem; text-align:center; }
+.crm-stat-val { font-size:1.1rem; font-weight:900; color:#C8FF00; line-height:1; }
+.crm-stat-lbl { font-size:0.6rem; color:#555; text-transform:uppercase; letter-spacing:0.08em; margin-top:0.2rem; }
+.crm-activity { display:flex; flex-direction:column; gap:0.5rem; }
+.crm-activity-label { font-size:0.6rem; text-transform:uppercase; letter-spacing:0.12em; color:#444; margin-bottom:0.25rem; }
+.crm-activity-item { display:flex; align-items:flex-start; gap:0.6rem; }
+.crm-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-top:4px; }
+.crm-act-text { flex:1; }
+.crm-act-title { font-size:0.75rem; font-weight:600; color:white; }
+.crm-act-sub { font-size:0.68rem; color:#555; }
+.crm-act-time { font-size:0.65rem; color:#444; flex-shrink:0; }
 
 /* ── PROOF ── */
 #proof {
@@ -1140,6 +1184,14 @@ nav {
   justify-content: flex-start;
   padding: 3rem;
   min-height: 600px;
+}
+.about-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .about-geo-bg {
@@ -1471,7 +1523,7 @@ footer {
       </div>
     </div>
     <div class="hero-right">
-      <p class="hero-sub">Nicolasa Soul connects your tools, automates your outreach and content, and shows you everything in one dashboard. You grow. You don't grind.</p>
+      <p class="hero-sub">Target. Filter. Message. Convert. Built in-house, inbox-guaranteed.</p>
       <div class="hero-cta-row">
         <a href="#cta" class="btn-fill">Book a Call</a>
         <a href="#what" class="btn-line">See the platform →</a>
@@ -1533,32 +1585,32 @@ footer {
     <div class="what-left reveal">
       <div class="section-label">The Platform</div>
       <h2>What does it <em>actually</em> do?</h2>
-      <p class="what-desc">Think of it as hiring an operations team — except it's AI, it runs 24/7, and you pay one flat monthly rate instead of six salaries.</p>
+      <p class="what-desc">Draw your market on a map. AI does the rest — from finding leads to booking calls.</p>
 
       <div class="what-pills">
         <div class="what-pill">
           <span class="pill-num">01</span>
-          Finds your ideal clients automatically
+          Draw your target market on a map
           <span class="pill-arrow">→</span>
         </div>
         <div class="what-pill">
           <span class="pill-num">02</span>
-          Sends personalized outreach in your voice
+          Filter & enrich leads by company or contact
           <span class="pill-arrow">→</span>
         </div>
         <div class="what-pill">
           <span class="pill-num">03</span>
-          Posts your content on every platform
+          Launch AI sequences across LinkedIn, Instagram, TikTok, email & calls
           <span class="pill-arrow">→</span>
         </div>
         <div class="what-pill">
           <span class="pill-num">04</span>
-          Connects all your tools in one place
+          Converts replies into booked calls automatically
           <span class="pill-arrow">→</span>
         </div>
         <div class="what-pill">
           <span class="pill-num">05</span>
-          Shows you what's working in real time
+          Manages everything inside our built-in CRM
           <span class="pill-arrow">→</span>
         </div>
       </div>
@@ -1570,61 +1622,53 @@ footer {
           <div class="d-dot" style="background:#FF5F57"></div>
           <div class="d-dot" style="background:#FEBC2E"></div>
           <div class="d-dot" style="background:#28C840"></div>
-          <div class="dash-url">nicolasasoul.com/dashboard</div>
+          <div class="dash-url">nicolasasoul.com/pipeline</div>
         </div>
         <div class="dash-content">
-          <div class="dash-row">
-            <div class="d-card">
-              <div class="d-card-label">New Leads</div>
-              <div class="d-card-val">142</div>
-              <div class="d-card-trend">↑ 34% this week</div>
+          <div class="d-act-title" style="margin-bottom:0.6rem;">Your Pipeline · Live</div>
+          <div class="pipe-step">
+            <div class="pipe-icon">🗺️</div>
+            <div class="pipe-info">
+              <div class="pipe-label">Map drawn · San Francisco Bay Area</div>
+              <div class="pipe-sub">847 businesses identified</div>
             </div>
-            <div class="d-card">
-              <div class="d-card-label">Revenue</div>
-              <div class="d-card-val">$28k</div>
-              <div class="d-card-trend">↑ Best month</div>
-            </div>
-            <div class="d-card">
-              <div class="d-card-label">Hrs Saved</div>
-              <div class="d-card-val">18</div>
-              <div class="d-card-trend">This week</div>
-            </div>
+            <div class="pipe-badge" style="color:#C8FF00;">Done ✓</div>
           </div>
-          <div class="d-bars">
-            <div class="d-act-title">Lead Flow · This Month</div>
-            <div class="bar-row">
-              <div class="bar-col" style="height:35%; background:#1E1E1E;"></div>
-              <div class="bar-col" style="height:52%; background:#1E1E1E;"></div>
-              <div class="bar-col" style="height:41%; background:#1E1E1E;"></div>
-              <div class="bar-col" style="height:68%; background:#222;"></div>
-              <div class="bar-col" style="height:59%; background:#222;"></div>
-              <div class="bar-col" style="height:80%; background:#C8FF00;"></div>
-              <div class="bar-col" style="height:75%; background:#C8FF00;"></div>
-              <div class="bar-col" style="height:91%; background:#C8FF00;"></div>
+          <div class="pipe-connector"></div>
+          <div class="pipe-step">
+            <div class="pipe-icon">🔍</div>
+            <div class="pipe-info">
+              <div class="pipe-label">Filter & Enrich complete</div>
+              <div class="pipe-sub">142 qualified · 38 companies · 104 contacts</div>
             </div>
+            <div class="pipe-badge" style="color:#C8FF00;">Done ✓</div>
           </div>
-          <div class="d-activity">
-            <div class="d-act-title">Live Activity</div>
-            <div class="d-act-item">
-              <div class="d-act-dot" style="background:#C8FF00"></div>
-              Outreach sent to 12 prospects
-              <span class="d-act-time">2m ago</span>
+          <div class="pipe-connector"></div>
+          <div class="pipe-step">
+            <div class="pipe-icon">⚡</div>
+            <div class="pipe-info">
+              <div class="pipe-label">Sequence active · 3 platforms</div>
+              <div class="pipe-sub">LinkedIn · Instagram · Email · 89 in progress</div>
             </div>
-            <div class="d-act-item">
-              <div class="d-act-dot" style="background:#888"></div>
-              New reply from Maya K.
-              <span class="d-act-time">14m ago</span>
+            <div class="pipe-badge" style="color:#C8FF00; animation: pulse 1.5s infinite;">Live</div>
+          </div>
+          <div class="pipe-connector"></div>
+          <div class="pipe-step">
+            <div class="pipe-icon">📞</div>
+            <div class="pipe-info">
+              <div class="pipe-label">Calls booked this week</div>
+              <div class="pipe-sub">12 discovery calls · ↑ 4 from last week</div>
             </div>
-            <div class="d-act-item">
-              <div class="d-act-dot" style="background:#555"></div>
-              Instagram post published
-              <span class="d-act-time">1h ago</span>
+            <div class="pipe-badge" style="color:#C8FF00;">Done ✓</div>
+          </div>
+          <div class="pipe-connector"></div>
+          <div class="pipe-step">
+            <div class="pipe-icon">🗂️</div>
+            <div class="pipe-info">
+              <div class="pipe-label">CRM synced automatically</div>
+              <div class="pipe-sub">All messages, calls & revenue logged</div>
             </div>
-            <div class="d-act-item">
-              <div class="d-act-dot" style="background:#C8FF00"></div>
-              Discovery call booked
-              <span class="d-act-time">2h ago</span>
-            </div>
+            <div class="pipe-badge" style="color:#C8FF00;">Done ✓</div>
           </div>
         </div>
       </div>
@@ -1660,26 +1704,26 @@ footer {
 
   <div class="section-label reveal" style="justify-content:center;">Sound Familiar?</div>
   <h2 class="reveal">You built something <em>real.</em><br>Your back-end didn't.</h2>
-  <p class="reveal">You're not failing. You're just running your business manually in a world that's already automated. That ends here.</p>
+  <p class="reveal">You're not failing. You're scaling without the infrastructure to support it. That ends here.</p>
 
   <div class="pain-list reveal">
     <div class="pain-item">
       <span class="pain-number">01</span>
       <span class="pain-icon">😵</span>
-      <h3>You're doing everything by hand</h3>
-      <p>Following up manually, writing every post yourself, copying data between apps. It's eating your whole week.</p>
+      <h3>Your leads are falling through the cracks</h3>
+      <p>You've got people interested but no real system to follow up. By the time you circle back, they've moved on — and you've lost the deal.</p>
     </div>
     <div class="pain-item">
       <span class="pain-number">02</span>
-      <span class="pain-icon">🔧</span>
-      <h3>Your tools don't talk to each other</h3>
-      <p>Six subscriptions. Zero of them sync. Your data lives in four different places and nothing is connected.</p>
+      <span class="pain-icon">🚫</span>
+      <h3>You got flagged for sounding like a robot</h3>
+      <p>You tried cold DMs and it backfired. Platforms flagged you, accounts got restricted, and the outreach felt nothing like you. There's a better way.</p>
     </div>
     <div class="pain-item">
       <span class="pain-number">03</span>
-      <span class="pain-icon">📉</span>
-      <h3>More clients means more chaos</h3>
-      <p>Growth shouldn't cost you your freedom. But right now it does — and you can feel yourself hitting the ceiling.</p>
+      <span class="pain-icon">🔧</span>
+      <h3>You're duct-taping Make workflows together</h3>
+      <p>You built something in Make that half-works — until it breaks. Now you're spending more time fixing automations than actually running your business.</p>
     </div>
   </div>
 </section>
@@ -1741,17 +1785,17 @@ footer {
     </div>
   </div>
 
-  <!-- Feature 2: Content -->
+  <!-- Feature 2: Sequencer -->
   <div class="feature-block flip reveal">
     <div class="feature-text">
-      <span class="feature-tag">02 — Content Pipeline</span>
-      <h3>Your content posts itself. Every day. Every platform.</h3>
-      <p>Share one idea. The platform turns it into Instagram captions, email newsletters, Twitter threads, and blog posts — then publishes everything automatically. Never stare at a blank screen again.</p>
+      <span class="feature-tag">02 — The Sequencer</span>
+      <h3>One lead. Every platform. All angles covered.</h3>
+      <p>The Sequencer hits your prospects across email, Instagram, LinkedIn, TikTok, and calls — in one automated flow. AI writes every message in your voice, delivered through technology we built in-house. They can't ignore you when you're everywhere.</p>
       <ul class="feature-checklist">
-        <li>One idea becomes content for every channel</li>
-        <li>Auto-scheduled for peak engagement times</li>
-        <li>Matches your tone, brand voice, and aesthetic</li>
-        <li>No approvals needed — or full control if you want it</li>
+        <li>Email, Instagram, LinkedIn, TikTok & calls in one sequence</li>
+        <li>AI writes every message in your exact voice</li>
+        <li>Built in-house — delivered through real hardware, never flagged</li>
+        <li>Follows up automatically until they respond</li>
       </ul>
     </div>
     <div class="feature-visual light">
@@ -1760,86 +1804,124 @@ footer {
         <polygon points="200,80 330,155 330,245 200,320 70,245 70,155" fill="none" stroke="black" stroke-width="1"/>
         <circle cx="200" cy="200" r="60" fill="none" stroke="black" stroke-width="1"/>
       </svg>
-      <div class="content-flow">
-        <div class="cf-item" style="border-color:#2A2A2A; background:#111;">
-          <div class="cf-icon" style="background:#1A1A1A;">🎙️</div>
-          <div class="cf-text">
-            <div class="cf-name" style="color:white;">Voice note idea</div>
-            <div class="cf-sub">Your raw input</div>
+      <div class="seq-flow">
+        <div class="seq-lead">
+          <div class="seq-avatar">MK</div>
+          <div class="seq-lead-info">
+            <div class="seq-lead-name">Marcus Klein</div>
+            <div class="seq-lead-sub">CEO · SaaS Founder · 142 employees</div>
           </div>
-          <div class="cf-badge" style="border-color:#333; color:#666;">Input</div>
+          <div class="cf-badge" style="border-color:#0A0A0A;color:#0A0A0A;">In Sequence</div>
         </div>
-        <div class="cf-arrow">↓</div>
-        <div class="cf-item" style="border-color:#2A2A2A; background:#111;">
-          <div class="cf-icon" style="background:#1A1A1A;">📸</div>
-          <div class="cf-text">
-            <div class="cf-name" style="color:white;">Instagram · posted</div>
-            <div class="cf-sub">847 views · 2 min ago</div>
+        <div class="seq-steps">
+          <div class="seq-step">
+            <div class="seq-icon">📧</div>
+            <div class="seq-info">
+              <div class="seq-day">Day 1 · Email</div>
+              <div class="seq-status">Opened · No reply yet</div>
+            </div>
+            <div class="cf-badge" style="border-color:#0A0A0A;color:#0A0A0A;">Sent ✓</div>
           </div>
-          <div class="cf-badge live">Live ✓</div>
-        </div>
-        <div class="cf-item" style="border-color:#2A2A2A; background:#111;">
-          <div class="cf-icon" style="background:#1A1A1A;">🐦</div>
-          <div class="cf-text">
-            <div class="cf-name" style="color:white;">Twitter thread · 5 posts</div>
-            <div class="cf-sub">Scheduled · 3pm today</div>
+          <div class="seq-connector"></div>
+          <div class="seq-step">
+            <div class="seq-icon">📸</div>
+            <div class="seq-info">
+              <div class="seq-day">Day 3 · Instagram DM</div>
+              <div class="seq-status">Delivered · Seen</div>
+            </div>
+            <div class="cf-badge" style="border-color:#0A0A0A;color:#0A0A0A;">Sent ✓</div>
           </div>
-          <div class="cf-badge queue">Queued</div>
-        </div>
-        <div class="cf-item" style="border-color:#2A2A2A; background:#111;">
-          <div class="cf-icon" style="background:#1A1A1A;">📧</div>
-          <div class="cf-text">
-            <div class="cf-name" style="color:white;">Email newsletter</div>
-            <div class="cf-sub">Sending to 2,400 subs</div>
+          <div class="seq-connector"></div>
+          <div class="seq-step">
+            <div class="seq-icon">💼</div>
+            <div class="seq-info">
+              <div class="seq-day">Day 5 · LinkedIn</div>
+              <div class="seq-status">Sending now...</div>
+            </div>
+            <div class="cf-badge" style="border-color:#C8FF00;color:#C8FF00; background:transparent;">Live</div>
           </div>
-          <div class="cf-badge live">Live ✓</div>
+          <div class="seq-connector"></div>
+          <div class="seq-step">
+            <div class="seq-icon">✅</div>
+            <div class="seq-info">
+              <div class="seq-day">Marcus replied on LinkedIn</div>
+              <div class="seq-status">"Let's set up a call this week"</div>
+            </div>
+            <div class="cf-badge" style="background:#0A0A0A;color:#C8FF00;border-color:#0A0A0A;">Converted</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Feature 3: Dashboard -->
+  <!-- Feature 3: CRM -->
   <div class="feature-block reveal">
     <div class="feature-text">
-      <span class="feature-tag">03 — Unified Dashboard</span>
-      <h3>Every number you need. One screen. Always live.</h3>
-      <p>Stop switching between Stripe, Instagram, your CRM, and a spreadsheet. Your dashboard pulls it all together and tells you what's working — and exactly what to do next.</p>
+      <span class="feature-tag">03 — Our CRM</span>
+      <h3>Every conversation, lead, and dollar. One place.</h3>
+      <p>Our built-in CRM stores everything — Instagram DMs, LinkedIn messages, calls, revenue, and leads — all in one place. No more switching tabs, no more lost follow-ups. Your entire pipeline, always live.</p>
       <ul class="feature-checklist">
-        <li>Revenue, leads, content — all in one view</li>
-        <li>Connects every tool you already use</li>
-        <li>Weekly AI-generated growth report</li>
-        <li>Works while you sleep, travel, or live your life</li>
+        <li>Every Instagram DM and LinkedIn message stored automatically</li>
+        <li>Calls logged and recorded inside your pipeline</li>
+        <li>Revenue and leads tracked in real time</li>
+        <li>Full conversation history for every contact, every platform</li>
       </ul>
     </div>
     <div class="feature-visual">
       <svg style="position:absolute;inset:0;opacity:0.04;width:100%;height:100%;" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="180" cy="170" rx="22" ry="30" fill="white"/>
-        <ellipse cx="240" cy="170" rx="22" ry="30" fill="white"/>
         <circle cx="200" cy="200" r="180" fill="none" stroke="white" stroke-width="1"/>
-        <path d="M 185 210 Q 210 230 235 210" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <line x1="100" y1="200" x2="300" y2="200" stroke="white" stroke-width="2"/>
+        <circle cx="200" cy="200" r="120" fill="none" stroke="white" stroke-width="1"/>
+        <line x1="200" y1="20" x2="200" y2="380" stroke="white" stroke-width="0.5"/>
+        <line x1="20" y1="200" x2="380" y2="200" stroke="white" stroke-width="0.5"/>
       </svg>
-      <div style="width:100%;">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem;">
-          <div style="background:#111;border:1px solid #1E1E1E;padding:1.25rem;border-radius:2px;">
-            <div style="font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:#444;margin-bottom:0.5rem;">Monthly Revenue</div>
-            <div style="font-size:1.75rem;font-weight:900;color:#C8FF00;line-height:1;">$28,400</div>
-            <div style="font-size:0.62rem;color:#555;margin-top:0.25rem;">↑ 40% vs last month</div>
+      <div class="crm-card">
+        <div class="crm-header">
+          <div class="seq-avatar" style="width:42px;height:42px;font-size:0.85rem;">MK</div>
+          <div class="crm-contact-info">
+            <div class="crm-name">Marcus Klein</div>
+            <div class="crm-meta">CEO · SaaS Founder · In sequence since Day 1</div>
           </div>
-          <div style="background:#111;border:1px solid #1E1E1E;padding:1.25rem;border-radius:2px;">
-            <div style="font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:#444;margin-bottom:0.5rem;">Leads Pipeline</div>
-            <div style="font-size:1.75rem;font-weight:900;color:white;line-height:1;">142</div>
-            <div style="font-size:0.62rem;color:#555;margin-top:0.25rem;">34 warm · 8 ready to close</div>
+          <div class="cf-badge" style="background:#C8FF00;color:#0A0A0A;border-color:#C8FF00;flex-shrink:0;">Warm Lead</div>
+        </div>
+        <div class="crm-stats-row">
+          <div class="crm-stat">
+            <div class="crm-stat-val">$4,997</div>
+            <div class="crm-stat-lbl">Deal Value</div>
+          </div>
+          <div class="crm-stat">
+            <div class="crm-stat-val">3</div>
+            <div class="crm-stat-lbl">Touchpoints</div>
+          </div>
+          <div class="crm-stat">
+            <div class="crm-stat-val">1</div>
+            <div class="crm-stat-lbl">Call Logged</div>
           </div>
         </div>
-        <div style="background:#111;border:1px solid #1E1E1E;padding:1.25rem;border-radius:2px;">
-          <div style="font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:#444;margin-bottom:0.75rem;">Connected Sources</div>
-          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-            <span style="font-size:0.65rem;padding:0.25rem 0.6rem;background:#1A1A1A;color:#666;border:1px solid #222;">Stripe ✓</span>
-            <span style="font-size:0.65rem;padding:0.25rem 0.6rem;background:#1A1A1A;color:#666;border:1px solid #222;">Instagram ✓</span>
-            <span style="font-size:0.65rem;padding:0.25rem 0.6rem;background:#1A1A1A;color:#666;border:1px solid #222;">Gmail ✓</span>
-            <span style="font-size:0.65rem;padding:0.25rem 0.6rem;background:#1A1A1A;color:#666;border:1px solid #222;">Notion ✓</span>
-            <span style="font-size:0.65rem;padding:0.25rem 0.6rem;background:#1A1A1A;color:#C8FF00;border:1px solid #C8FF00;">+ Connect more</span>
+        <div class="crm-activity">
+          <div class="crm-activity-label">Activity Timeline</div>
+          <div class="crm-activity-item">
+            <div class="crm-dot" style="background:#C8FF00;"></div>
+            <div class="crm-act-text">
+              <div class="crm-act-title">📸 Instagram DM</div>
+              <div class="crm-act-sub">"Sounds interesting, tell me more"</div>
+            </div>
+            <div class="crm-act-time">2d ago</div>
+          </div>
+          <div class="crm-activity-item">
+            <div class="crm-dot" style="background:#888;"></div>
+            <div class="crm-act-text">
+              <div class="crm-act-title">💼 LinkedIn Message</div>
+              <div class="crm-act-sub">"Let's set up a call this week"</div>
+            </div>
+            <div class="crm-act-time">1d ago</div>
+          </div>
+          <div class="crm-activity-item">
+            <div class="crm-dot" style="background:#C8FF00;"></div>
+            <div class="crm-act-text">
+              <div class="crm-act-title">📞 Call · 18 min · Recorded</div>
+              <div class="crm-act-sub">Discovery call — ready to close</div>
+            </div>
+            <div class="crm-act-time">3h ago</div>
           </div>
         </div>
       </div>
@@ -1869,7 +1951,7 @@ footer {
 
   <div class="reveal">
     <div class="section-label">Real Results</div>
-    <h2>Founders who stopped<br>grinding and started <em>growing.</em></h2>
+    <h2>Founders who stopped<br>chasing leads and started <em>closing them.</em></h2>
   </div>
 
   <div class="proof-grid reveal">
@@ -1882,12 +1964,12 @@ footer {
       </svg>
       <div class="proof-big-num">3×</div>
       <div class="proof-num-label">Revenue in 90 Days</div>
-      <p class="proof-quote">"I went from manually chasing every lead to waking up with warm conversations already in my inbox. My revenue tripled and I'm working fewer hours than ever."</p>
+      <p class="proof-quote">"I was getting flagged on Instagram for cold DMs and had no system once someone replied. The Sequencer now hits them on email, Instagram, and LinkedIn automatically — every reply goes straight into the CRM. Tripled revenue in 90 days without sending a single message manually."</p>
       <div class="proof-author">
         <div class="proof-initials">K.T.</div>
         <div>
           <div class="proof-name">Kira Torres</div>
-          <div class="proof-role">Online Business Coach · Nomad</div>
+          <div class="proof-role">E-commerce Founder · Dubai</div>
         </div>
       </div>
     </div>
@@ -1900,13 +1982,13 @@ footer {
         <path d="M 48 70 Q 60 80 72 70" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
       </svg>
       <div class="proof-big-num outline">$40k</div>
-      <div class="proof-num-label">Monthly Revenue from Zero</div>
-      <p class="proof-quote">"Before this I had an incredible offer and no system to sell it. Now I have a machine running in the background while I travel and focus on delivery."</p>
+      <div class="proof-num-label">Monthly Revenue</div>
+      <p class="proof-quote">"I had leads everywhere and no way to track them. The map tool got me laser-focused on exactly who I was targeting, and once they're in the pipeline the follow-up just happens on its own. Went from scattered to $40k a month."</p>
       <div class="proof-author">
         <div class="proof-initials">M.L.</div>
         <div>
           <div class="proof-name">Maya Lindstrom</div>
-          <div class="proof-role">Spiritual Mentor · Course Creator</div>
+          <div class="proof-role">B2B Consultant · Remote</div>
         </div>
       </div>
     </div>
@@ -1920,12 +2002,12 @@ footer {
       </svg>
       <div class="proof-big-num">18h</div>
       <div class="proof-num-label">Saved Every Single Week</div>
-      <p class="proof-quote">"The content pipeline alone changed everything. My audience grew 40% in two months without me writing a single post manually. This is actually the future."</p>
+      <p class="proof-quote">"I was burning hours in Make trying to stitch automations that kept breaking. Nicolasa Soul replaced all of it — the outreach, the follow-up, the CRM. Got 18 hours back every week and my close rate actually went up."</p>
       <div class="proof-author">
         <div class="proof-initials">S.O.</div>
         <div>
           <div class="proof-name">Sofia Okafor</div>
-          <div class="proof-role">Wellness Entrepreneur · 5 Countries</div>
+          <div class="proof-role">Agency Owner · 3 Countries</div>
         </div>
       </div>
     </div>
@@ -1944,8 +2026,8 @@ footer {
 <section id="pricing">
   <div class="reveal">
     <div class="section-label">Pricing</div>
-    <h2>One subscription.<br>Your whole business <em>automated.</em></h2>
-    <p class="pricing-note">No agencies. No retainers. No hourly rates. <strong>One flat monthly rate</strong> and a system that works while you don't.</p>
+    <h2>One platform.<br>Your entire sales system <em>automated.</em></h2>
+    <p class="pricing-note">No stacking tools. No duct tape. <strong>One flat monthly rate</strong> for a system that prospects, sequences, and closes — while you focus on delivery.</p>
   </div>
 
   <div class="pricing-grid reveal">
@@ -1953,13 +2035,14 @@ footer {
       <div class="p-tier">Tier 01</div>
       <div class="p-name">Launchpad</div>
       <div class="p-price"><sup>$</sup>497<sub>/mo</sub></div>
-      <p class="p-desc">For entrepreneurs just getting their systems in order. The foundation before scale.</p>
+      <p class="p-desc">For founders ready to stop doing outreach manually and build a real pipeline for the first time.</p>
       <ul class="p-features">
-        <li>AI Outreach (500 contacts/mo)</li>
-        <li>CRM setup & integration</li>
-        <li>Unified dashboard</li>
-        <li>Brand positioning audit</li>
-        <li class="na">Content pipeline</li>
+        <li>Map prospecting tool (500 contacts/mo)</li>
+        <li>Filter & enrich — companies & contacts</li>
+        <li>Sequencer — email & 1 social platform</li>
+        <li>Built-in CRM (core features)</li>
+        <li>Calendar & call logging</li>
+        <li class="na">Full multi-platform sequencing</li>
         <li class="na">Dedicated engineer</li>
       </ul>
       <a href="#cta" class="p-cta">Get Started</a>
@@ -1969,13 +2052,14 @@ footer {
       <div class="p-tier">Tier 02 · Most Popular</div>
       <div class="p-name">Momentum</div>
       <div class="p-price"><sup>$</sup>1,497<sub>/mo</sub></div>
-      <p class="p-desc">For established founders ready to remove themselves as the bottleneck and scale with intelligence.</p>
+      <p class="p-desc">For established founders who want the full system — every platform, unlimited outreach, completely hands-off.</p>
       <ul class="p-features">
-        <li>Unlimited AI Outreach</li>
-        <li>Full CRM modernization</li>
-        <li>Content pipeline & auto-posting</li>
-        <li>Unified dashboard + analytics</li>
-        <li>Brand & positioning system</li>
+        <li>Map prospecting (unlimited contacts)</li>
+        <li>Filter & enrich — all sources</li>
+        <li>Full Sequencer — email, Instagram, LinkedIn, TikTok & calls</li>
+        <li>Built-in CRM (full access)</li>
+        <li>Calendar + recorded call logging</li>
+        <li>AI-written messages in your voice</li>
         <li class="na">Dedicated engineer</li>
       </ul>
       <a href="#cta" class="p-cta accent-cta">Book Discovery Call</a>
@@ -1984,17 +2068,17 @@ footer {
     <div class="p-card">
       <div class="p-tier">Tier 03</div>
       <div class="p-name">Sovereign</div>
-      <div class="p-price"><sup>$</sup>3,497<sub>/mo</sub></div>
-      <p class="p-desc">The full operating system. Custom-built, white-glove, completely hands-off.</p>
+      <div class="p-price" style="font-size:1.6rem;letter-spacing:-0.02em;">Contact Us</div>
+      <p class="p-desc">White-glove, fully custom. Built around your business — your team, your targets, your scale.</p>
       <ul class="p-features">
         <li>Everything in Momentum</li>
         <li>Dedicated in-house engineer</li>
-        <li>Monthly strategy with Nicolasa</li>
-        <li>Custom integrations, anything</li>
+        <li>Monthly strategy call with Nicolasa</li>
+        <li>Custom sequences & integrations</li>
         <li>Priority build queue</li>
         <li>Founding rate locked forever</li>
       </ul>
-      <a href="#cta" class="p-cta">Get Started</a>
+      <a href="#cta" class="p-cta">Let's Talk</a>
     </div>
   </div>
 </section>
@@ -2003,37 +2087,7 @@ footer {
 <section id="about" style="padding:0;">
   <div class="about-split">
     <div class="about-image-side">
-      <!-- Giant geometric face art -->
-      <div class="about-geo-bg">
-        <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" width="500" height="600">
-          <circle cx="250" cy="240" r="200" fill="none" stroke="white" stroke-width="1.5"/>
-          <circle cx="250" cy="240" r="150" fill="none" stroke="white" stroke-width="1"/>
-          <circle cx="250" cy="240" r="100" fill="none" stroke="white" stroke-width="0.75"/>
-          <ellipse cx="210" cy="220" rx="28" ry="38" fill="white"/>
-          <ellipse cx="290" cy="220" rx="28" ry="38" fill="white"/>
-          <circle cx="210" cy="224" r="12" fill="black"/>
-          <circle cx="290" cy="224" r="12" fill="black"/>
-          <circle cx="214" cy="220" r="4" fill="white"/>
-          <circle cx="294" cy="220" r="4" fill="white"/>
-          <line x1="170" y1="182" x2="162" y2="165" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <line x1="185" y1="176" x2="182" y2="158" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <line x1="200" y1="172" x2="200" y2="154" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <line x1="215" y1="174" x2="218" y2="156" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <line x1="228" y1="179" x2="234" y2="163" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <line x1="272" y1="179" x2="266" y2="163" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <line x1="285" y1="174" x2="282" y2="156" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <line x1="300" y1="172" x2="300" y2="154" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <line x1="315" y1="176" x2="318" y2="158" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <line x1="330" y1="182" x2="338" y2="165" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <path d="M 210 290 Q 240 310 270 300 Q 290 293 300 290" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <path d="M 210 290 Q 225 280 250 284 Q 272 280 290 290" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-          <line x1="50" y1="240" x2="450" y2="240" stroke="white" stroke-width="1.5"/>
-          <circle cx="70" cy="280" r="40" fill="none" stroke="white" stroke-width="1.5"/>
-          <circle cx="430" cy="280" r="40" fill="none" stroke="white" stroke-width="1.5"/>
-          <polygon points="250,20 460,120 460,360 250,460 40,360 40,120" fill="none" stroke="white" stroke-width="0.75"/>
-        </svg>
-      </div>
-      <div class="about-placeholder-text">[Photo of Nicolasa]</div>
+      <img src="mainpic-view copy.png" alt="Nicolasa Soul" class="about-photo">
       <div class="about-name-card">
         <div class="about-name-title">The Founder</div>
         <div class="about-name-main">Nicolasa Soul</div>
@@ -2042,10 +2096,10 @@ footer {
 
     <div class="about-text-side">
       <div class="section-label">About</div>
-      <h2>Built by someone who thinks in systems and <em>leads with soul.</em></h2>
-      <p>Nicolasa is a systems architect who spent years building AI infrastructure for founders redefining how business gets done. She believes technology should liberate — not complicate.</p>
-      <p>She didn't come from Silicon Valley. She comes from a tradition of seeing the whole picture — applying ancestral intelligence to modern operations. The result is a platform that is technically elite, spiritually coherent, and built for people who refuse to choose between freedom and ambition.</p>
-      <blockquote>"I built the system I wish I'd had — then made it available to the people who deserve it most."</blockquote>
+      <h2>Built by someone the <em>system couldn't contain.</em></h2>
+      <p>Nicolasa went straight from college into some of the most competitive companies in tech — Lyft, SurveyMonkey, Google. She built things that worked. And she never once felt like she belonged.</p>
+      <p>She's neurodivergent. In every boardroom and every Slack channel, she was too much, too different, didn't quite fit the mold. So she stopped trying to fit — and started building her own. Nicolasa Soul runs on neurodivergent talent, starting with her engineer who is autistic. She plans to keep it that way. The people who think differently are the ones who build what's actually next.</p>
+      <blockquote>"Every system I worked in told me I was the problem. Turns out — I just needed to build a better one."</blockquote>
       <div class="about-stats">
         <div class="about-stat">
           <div class="a-stat-val">[X]+</div>
@@ -2090,9 +2144,9 @@ footer {
     </svg>
   </div>
 
-  <div class="cta-spots reveal">Only [X] founding member spots remaining</div>
-  <h2 class="reveal">Ready to <em>build</em> the<br>backend your vision<br>deserves?</h2>
-  <p class="reveal">Your discovery call is free. 45 minutes. You'll walk away knowing exactly what your business needs — and whether Nicolasa Soul is built to deliver it.</p>
+  <div class="cta-spots reveal">Only 50 founding member spots remaining</div>
+  <h2 class="reveal">Ready to <em>build</em> the<br>sales system your<br>business deserves?</h2>
+  <p class="reveal">Your discovery call is free. 30 minutes. You'll walk away knowing exactly what your sales system needs — and whether Nicolasa Soul is built to deliver it.</p>
   <div class="cta-btn-row reveal">
     <a href="#" class="btn-accent">Book Your Free Call</a>
     <a href="#features" class="btn-line">See the platform →</a>
