@@ -2319,8 +2319,8 @@ const links = [[0,1],[1,2],[2,3],[0,3],[1,3]];
     cCtx.beginPath();
     cCtx.moveTo(pts[a].x, pts[a].y);
     cCtx.lineTo(pts[b].x, pts[b].y);
-    cCtx.strokeStyle = 'rgba(10,10,10,0.18)';
-    cCtx.lineWidth = 0.6;
+    cCtx.strokeStyle = 'rgba(10,10,10,0.55)';
+    cCtx.lineWidth = 1;
     cCtx.stroke();
   });
 
@@ -2329,22 +2329,22 @@ const links = [[0,1],[1,2],[2,3],[0,3],[1,3]];
     cCtx.beginPath();
     cCtx.moveTo(mx, my);
     cCtx.lineTo(p.x, p.y);
-    cCtx.strokeStyle = p.accent ? 'rgba(200,255,0,0.5)' : 'rgba(10,10,10,0.12)';
-    cCtx.lineWidth = 0.5;
+    cCtx.strokeStyle = p.accent ? 'rgba(200,255,0,0.9)' : 'rgba(10,10,10,0.4)';
+    cCtx.lineWidth = 0.8;
     cCtx.stroke();
   });
 
   // outer nodes
   pts.forEach(p => {
     cCtx.beginPath();
-    cCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-    cCtx.fillStyle = p.accent ? '#C8FF00' : 'rgba(10,10,10,0.6)';
+    cCtx.arc(p.x, p.y, p.size + 0.5, 0, Math.PI * 2);
+    cCtx.fillStyle = p.accent ? '#C8FF00' : 'rgba(10,10,10,0.9)';
     cCtx.fill();
   });
 
   // center dot
   cCtx.beginPath();
-  cCtx.arc(mx, my, 3, 0, Math.PI * 2);
+  cCtx.arc(mx, my, 4, 0, Math.PI * 2);
   cCtx.fillStyle = '#C8FF00';
   cCtx.fill();
 
