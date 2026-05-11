@@ -29,18 +29,29 @@ body {
 }
 
 /* Custom cursor */
-.cursor {
+.cursor-dot {
   position: fixed;
-  width: 12px; height: 12px;
-  background: var(--black);
+  width: 8px; height: 8px;
+  background: #C8FF00;
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s, background 0.2s;
-  mix-blend-mode: difference;
+  transition: transform 0.1s, width 0.2s, height 0.2s;
 }
-.cursor.big { width: 50px; height: 50px; background: var(--black); }
+.cursor-ring {
+  position: fixed;
+  width: 36px; height: 36px;
+  border: 1.5px solid #C8FF00;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, border-color 0.3s, opacity 0.3s;
+  opacity: 0.6;
+}
+.cursor-dot.hover { width: 6px; height: 6px; background: #C8FF00; }
+.cursor-ring.hover { width: 52px; height: 52px; opacity: 1; border-color: #C8FF00; }
 
 /* ── NAV ── */
 nav {
@@ -1500,7 +1511,8 @@ footer {
 </style>
 </head>
 <body>
-<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
 <!-- NAV -->
 <nav>
@@ -2302,14 +2314,28 @@ footer {
 })();
 
 // Custom cursor
-const cursor = document.getElementById('cursor');
+const cursorDot = document.getElementById('cursorDot');
+const cursorRing = document.getElementById('cursorRing');
+let ringX = 0, ringY = 0, mouseX = 0, mouseY = 0;
+
 document.addEventListener('mousemove', e => {
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top = e.clientY + 'px';
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  cursorDot.style.left = mouseX + 'px';
+  cursorDot.style.top = mouseY + 'px';
 });
-document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
-  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+
+(function animateRing() {
+  ringX += (mouseX - ringX) * 0.12;
+  ringY += (mouseY - ringY) * 0.12;
+  cursorRing.style.left = ringX + 'px';
+  cursorRing.style.top = ringY + 'px';
+  requestAnimationFrame(animateRing);
+})();
+
+document.querySelectorAll('a, button, .p-cta, .what-pill').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursorDot.classList.add('hover'); cursorRing.classList.add('hover'); });
+  el.addEventListener('mouseleave', () => { cursorDot.classList.remove('hover'); cursorRing.classList.remove('hover'); });
 });
 
 // Scroll reveal
