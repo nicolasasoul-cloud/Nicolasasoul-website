@@ -2323,7 +2323,7 @@ const orbitParticles = Array.from({length: 6}, (_, i) => ({
     cCtx.beginPath();
     cCtx.moveTo(mx, my);
     cCtx.lineTo(p.x, p.y);
-    cCtx.strokeStyle = p.isAccent ? 'rgba(200,255,0,0.35)' : 'rgba(248,246,242,0.12)';
+    cCtx.strokeStyle = p.isAccent ? 'rgba(200,255,0,0.5)' : 'rgba(10,10,10,0.2)';
     cCtx.lineWidth = 0.5;
     cCtx.stroke();
   });
@@ -2348,7 +2348,7 @@ const orbitParticles = Array.from({length: 6}, (_, i) => ({
   orbitParticles.forEach(p => {
     cCtx.beginPath();
     cCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-    cCtx.fillStyle = p.isAccent ? '#C8FF00' : 'rgba(248,246,242,0.75)';
+    cCtx.fillStyle = p.isAccent ? '#C8FF00' : 'rgba(10,10,10,0.7)';
     cCtx.fill();
   });
 
