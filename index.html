@@ -29,29 +29,7 @@ body {
 }
 
 /* Custom cursor */
-.cursor-dot {
-  position: fixed;
-  width: 8px; height: 8px;
-  background: #C8FF00;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s, width 0.2s, height 0.2s;
-}
-.cursor-ring {
-  position: fixed;
-  width: 36px; height: 36px;
-  border: 1.5px solid #C8FF00;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s, height 0.3s, border-color 0.3s, opacity 0.3s;
-  opacity: 0.6;
-}
-.cursor-dot.hover { width: 6px; height: 6px; background: #C8FF00; }
-.cursor-ring.hover { width: 52px; height: 52px; opacity: 1; border-color: #C8FF00; }
+#cursorCanvas { position: fixed; inset: 0; pointer-events: none; z-index: 9999; }
 
 /* ── NAV ── */
 nav {
@@ -1511,8 +1489,7 @@ footer {
 </style>
 </head>
 <body>
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+<canvas id="cursorCanvas"></canvas>
 
 <!-- NAV -->
 <nav>
@@ -2313,30 +2290,76 @@ footer {
   draw();
 })();
 
-// Custom cursor
-const cursorDot = document.getElementById('cursorDot');
-const cursorRing = document.getElementById('cursorRing');
-let ringX = 0, ringY = 0, mouseX = 0, mouseY = 0;
+// Custom cursor — constellation
+const cursorCanvas = document.getElementById('cursorCanvas');
+const cCtx = cursorCanvas.getContext('2d');
+function resizeCursor() { cursorCanvas.width = window.innerWidth; cursorCanvas.height = window.innerHeight; }
+resizeCursor();
+window.addEventListener('resize', resizeCursor);
 
-document.addEventListener('mousemove', e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  cursorDot.style.left = mouseX + 'px';
-  cursorDot.style.top = mouseY + 'px';
-});
+let mx = -300, my = -300;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
 
-(function animateRing() {
-  ringX += (mouseX - ringX) * 0.12;
-  ringY += (mouseY - ringY) * 0.12;
-  cursorRing.style.left = ringX + 'px';
-  cursorRing.style.top = ringY + 'px';
-  requestAnimationFrame(animateRing);
+const orbitParticles = Array.from({length: 6}, (_, i) => ({
+  angle: (i / 6) * Math.PI * 2,
+  speed: 0.028 + (i % 2) * 0.015,
+  radius: 16 + (i % 3) * 8,
+  size: 1 + (i % 2) * 0.8,
+  isAccent: i % 3 === 0,
+  x: 0, y: 0
+}));
+
+(function drawCursor() {
+  cCtx.clearRect(0, 0, cursorCanvas.width, cursorCanvas.height);
+
+  orbitParticles.forEach(p => {
+    p.angle += p.speed;
+    p.x = mx + Math.cos(p.angle) * p.radius;
+    p.y = my + Math.sin(p.angle) * p.radius;
+  });
+
+  // lines from center to each particle
+  orbitParticles.forEach(p => {
+    cCtx.beginPath();
+    cCtx.moveTo(mx, my);
+    cCtx.lineTo(p.x, p.y);
+    cCtx.strokeStyle = p.isAccent ? 'rgba(200,255,0,0.35)' : 'rgba(248,246,242,0.12)';
+    cCtx.lineWidth = 0.5;
+    cCtx.stroke();
+  });
+
+  // lines between nearby particles
+  for (let i = 0; i < orbitParticles.length; i++) {
+    for (let j = i + 1; j < orbitParticles.length; j++) {
+      const a = orbitParticles[i], b = orbitParticles[j];
+      const d = Math.hypot(a.x - b.x, a.y - b.y);
+      if (d < 48) {
+        cCtx.beginPath();
+        cCtx.moveTo(a.x, a.y);
+        cCtx.lineTo(b.x, b.y);
+        cCtx.strokeStyle = `rgba(200,255,0,${(1 - d / 48) * 0.25})`;
+        cCtx.lineWidth = 0.4;
+        cCtx.stroke();
+      }
+    }
+  }
+
+  // particles
+  orbitParticles.forEach(p => {
+    cCtx.beginPath();
+    cCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    cCtx.fillStyle = p.isAccent ? '#C8FF00' : 'rgba(248,246,242,0.75)';
+    cCtx.fill();
+  });
+
+  // center dot — exact mouse position, no lag
+  cCtx.beginPath();
+  cCtx.arc(mx, my, 3, 0, Math.PI * 2);
+  cCtx.fillStyle = '#C8FF00';
+  cCtx.fill();
+
+  requestAnimationFrame(drawCursor);
 })();
-
-document.querySelectorAll('a, button, .p-cta, .what-pill').forEach(el => {
-  el.addEventListener('mouseenter', () => { cursorDot.classList.add('hover'); cursorRing.classList.add('hover'); });
-  el.addEventListener('mouseleave', () => { cursorDot.classList.remove('hover'); cursorRing.classList.remove('hover'); });
-});
 
 // Scroll reveal
 const observer = new IntersectionObserver((entries) => {
