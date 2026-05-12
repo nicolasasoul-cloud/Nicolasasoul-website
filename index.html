@@ -1486,6 +1486,83 @@ footer {
 .reveal.d1 { transition-delay: 0.1s; }
 .reveal.d2 { transition-delay: 0.2s; }
 .reveal.d3 { transition-delay: 0.3s; }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  /* hide cursor canvas on touch */
+  #cursorCanvas { display: none; }
+  body { cursor: auto; }
+
+  /* nav */
+  nav { padding: 1rem 1.25rem; }
+  .nav-links { display: none; }
+  .nav-cta { font-size: 0.7rem; padding: 0.5rem 1rem; }
+
+  /* hero */
+  #hero { padding: 0 0 4rem; }
+  .hero-text-block { grid-template-columns: 1fr; padding: 0 1.25rem; gap: 2rem; padding-top: 6rem; }
+  .hero-right { padding: 0; }
+  .hero-headline { font-size: clamp(2.8rem, 12vw, 4rem); }
+  .hero-sub { font-size: 0.9rem; }
+  .hero-cta-row { flex-direction: column; gap: 0.75rem; }
+  .hero-cta-row a { text-align: center; }
+  .hero-scroll { display: none; }
+
+  /* ticker */
+  .ticker-wrap { padding: 0.6rem 0; }
+
+  /* what section */
+  #what { padding: 4rem 1.25rem; }
+  .what-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .what-right { display: none; }
+  h2 { font-size: clamp(2rem, 8vw, 3rem); }
+
+  /* features */
+  #features { padding: 4rem 0; }
+  .feature-block { grid-template-columns: 1fr; }
+  .feature-block.flip { direction: ltr; }
+  .feature-text { padding: 2rem 1.25rem; border-right: none; border-left: none; border-bottom: 1px solid var(--gray-light); }
+  .feature-block.flip .feature-text { border-left: none; }
+  .feature-visual { display: none; }
+
+  /* problem */
+  #problem { padding: 4rem 1.25rem; }
+  .pain-list { grid-template-columns: 1fr; }
+  .pain-item { padding: 2rem 1.5rem; }
+
+  /* proof */
+  #proof { padding: 4rem 1.25rem; }
+  .proof-grid { grid-template-columns: 1fr; }
+  .proof-card { padding: 2rem 1.5rem; }
+
+  /* pricing */
+  #pricing { padding: 4rem 1.25rem; }
+  .pricing-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .p-card { padding: 2rem 1.5rem; }
+  .p-card.dark { order: -1; }
+
+  /* about */
+  #about { padding: 0; }
+  .about-split { grid-template-columns: 1fr; }
+  .about-image-side { min-height: 380px; }
+  .about-text-side { padding: 2.5rem 1.25rem; }
+  .about-stats { gap: 1.5rem; }
+
+  /* team card */
+  .team-card-wrap { padding: 1.5rem 1.25rem; }
+  .team-card { flex-direction: column; align-items: center; text-align: center; gap: 1.5rem; }
+  .team-tags { justify-content: center; }
+
+  /* cta */
+  #cta { padding: 5rem 1.25rem; }
+  .cta-btn-row { flex-direction: column; align-items: center; gap: 0.75rem; }
+  .cta-btn-row a { text-align: center; width: 100%; max-width: 280px; }
+  h2.reveal { font-size: clamp(2rem, 8vw, 3rem); }
+
+  /* footer */
+  footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.25rem; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
 </style>
 </head>
 <body>
